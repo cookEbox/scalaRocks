@@ -30,6 +30,7 @@
           export METALS_JAVA_HOME=${pkgs.jdk11}/lib/openjdk
           export DIRENV_LOG_FORMAT=
           echo 'addSbtPlugin("ch.epfl.scala" % "sbt-bloop" % "1.5.0")' > project/plugins.sbt
+          echo 'addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.2")' >> project/plugins.sbt
           sbt bloopInstall || true
         '';
       };

@@ -12,3 +12,4 @@ lazy val root = project
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test
   )
   resolvers += "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases/"
+enablePlugins(ScalafmtPlugin)
