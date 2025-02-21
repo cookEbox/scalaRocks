@@ -1,0 +1,48 @@
+object OOP { 
+  def greet(name: String): String = s"Hello, $name"
+
+  trait Vegetarian { 
+    def isVegetarian(): Boolean
+  }
+
+  sealed trait DrinkSize { 
+  }
+
+  case object Large extends DrinkSize 
+  case object Medium extends DrinkSize
+  case object Small extends DrinkSize
+
+  abstract class Food(name: String, price: Int, description: String) extends Vegetarian with MenuItem(name, price, description) { 
+    def describe(): String = name + " " + price.toString() + " "+ description
+  }
+
+  abstract class Drink(name: String, size: DrinkSize) extends MenuItem {
+    def describe(): String = name + " " + size.toString()
+  }
+
+  sealed trait MenuItem(name: String, price: Int, description: String) {
+    def describe(): String 
+  }
+
+  // val chipsMenuItem = new MenuItem(name = "Chips", price = 199, description = "Lovely Chips")
+
+  class MainDishMenuItem(name: String, price: Int, description: String, isVeg: Boolean) extends MenuItem(name, price, description) with Food {
+    override def describe(): String = s"Main dish: ${super.describe()}"
+    def isVegetarian(): Boolean = isVeg
+  }
+
+  val curryMainDishMenuItem: MainDishMenuItem = new MainDishMenuItem(name = "Curry", price = 1099, description = "Spicy curry", isVeg = false)
+
+  class SideDishMenuItem(name: String, price: Int, description: String, isVeg: Boolean) extends MenuItem(name, price, description) with Food {
+    override def describe(): String = s"Side dish: ${super.describe()}"
+    def isVegetarian(): Boolean = isVeg
+  }
+
+  class SoftDrinkMenuItem 
+
+  val riceSideMenuItem: SideDishMenuItem = new SideDishMenuItem(name = "Rice", price = 199, description = "Fluffy rice", isVeg = true)
+
+  def main(args: Array[String]): Unit = {
+    
+  }
+}
